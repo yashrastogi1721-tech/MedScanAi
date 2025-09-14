@@ -1,7 +1,10 @@
-fastapi
-uvicorn
+fastapi==0.115.0
+uvicorn==0.30.6
+torch==2.5.0
+torchvision==0.20.0
 pillow
+numpy
+scikit-learn
+pydantic
 python-multipart
-torch==1.13.1
-torchvision==0.14.1
-git+https://github.com/jacobgil/pytorch-grad-cam.git
+pytorch-grad-cam @ git+https://github.com/jacobgil/pytorch-grad-cam.git
