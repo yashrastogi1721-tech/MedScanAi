@@ -1,18 +1,23 @@
-# Use lightweight Python image
-FROM python:3.9-slim
+# Use PyTorch base image
+FROM pytorch/pytorch:2.2.0-cpu
 
 # Set working directory
 WORKDIR /app
 
-# Copy requirements and install
+# Install git (needed for pytorch-grad-cam)
+RUN apt-get update && apt-get install -y git
+
+# Copy requirements
 COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all files
+# Copy all project files
 COPY . .
 
-# Expose FastAPI default port
+# Expose port
 EXPOSE 8000
 
-# Run the app with Uvicorn
+# Run FastAPI
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
