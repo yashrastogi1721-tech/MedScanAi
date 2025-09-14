@@ -1,8 +1,7 @@
 fastapi
 uvicorn
-torch
-torchvision
 pillow
 python-multipart
+torch==1.13.1
+torchvision==0.14.1
 git+https://github.com/jacobgil/pytorch-grad-cam.git
-
