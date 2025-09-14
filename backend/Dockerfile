@@ -1,10 +1,10 @@
-# Use PyTorch base image
-FROM pytorch/pytorch:2.2.0-cpu
+# Use a valid PyTorch base image
+FROM pytorch/pytorch:2.1.0-cpu
 
 # Set working directory
 WORKDIR /app
 
-# Install git (needed for pytorch-grad-cam)
+# Install git (needed for Grad-CAM)
 RUN apt-get update && apt-get install -y git
 
 # Copy requirements
