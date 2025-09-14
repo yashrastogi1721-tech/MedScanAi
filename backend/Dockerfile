@@ -1,21 +1,18 @@
-# Use a lightweight Python image
-FROM python:3.10-slim
+# Use lightweight Python image
+FROM python:3.9-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy requirements first (better caching)
+# Copy requirements and install
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Copy the rest of the backend code
+# Copy all files
 COPY . .
 
-# Expose port (Render will use this)
+# Expose FastAPI default port
 EXPOSE 8000
 
-# Start the FastAPI app with uvicorn
+# Run the app with Uvicorn
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
