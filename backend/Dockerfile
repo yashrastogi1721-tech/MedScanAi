@@ -10,6 +10,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Install dependencies
 RUN pip install --upgrade pip
+RUN pip install grad-cam
+
 
 # Copy the rest of the backend code
 COPY . .
