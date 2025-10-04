@@ -5,11 +5,11 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy requirements first (better caching)
-COPY requirements.txt .
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Install dependencies
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
 
 # Copy the rest of the backend code
 COPY . .
